@@ -6,7 +6,7 @@ export default async function Page({
   const { id } = await params;
   return (
     <>
-      <h1>Movies/[id] : {id}</h1>
+      <div>Movies : {id}</div>
     </>
   );
 }
