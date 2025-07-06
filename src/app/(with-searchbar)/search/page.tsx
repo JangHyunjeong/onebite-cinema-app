@@ -6,7 +6,7 @@ export default async function Page({
   const { q } = await searchParams;
   return (
     <>
-      <h1>search 페이지: {q}</h1>
+      <div>search: {q}</div>
     </>
   );
 }
