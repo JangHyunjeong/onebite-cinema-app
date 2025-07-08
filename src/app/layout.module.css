@@ -1,0 +1,20 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: content-box;
+}
+.header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  color: rgb(255, 0, 0);
+  font-weight: 700;
+}
+.main {
+  padding: 40px 0;
+}
+.footer {
+  padding: 20px 0;
+}

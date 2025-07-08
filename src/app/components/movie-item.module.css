@@ -1,0 +1,21 @@
+.container {
+  .link {
+    display: block;
+    overflow: hidden;
+  }
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

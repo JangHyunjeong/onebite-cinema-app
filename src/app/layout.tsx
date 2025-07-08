@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import style from "./layout.module.css";
+import Link from "next/link";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
@@ -21,9 +23,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        Global Layout
-        {children}
       <body className={pretendard.className}>
+        <div className={style.container}>
+          <header className={style.header}>
+            <Link href="/">ONEBITE CINEMA</Link>
+          </header>
+          <main className={style.main}>
+            <div>{children}</div>
+          </main>
+          <footer className={style.footer}>@lulullu</footer>
+        </div>
       </body>
     </html>
   );

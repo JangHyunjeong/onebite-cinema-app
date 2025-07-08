@@ -1,0 +1,15 @@
+.container {
+  &:not(:nth-child(1 of .container)) {
+    margin-top: 60px;
+  }
+  .movieList {
+    display: grid;
+    grid-template-columns: repeat(var(--items-per-row), 1fr);
+    column-gap: 10px;
+    row-gap: 40px;
+  }
+}
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
