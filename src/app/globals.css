@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: inherit;
+}
+html,
+body {
+  height: 100%;
+  font-size: 16px;
+}
+a,
+input,
+button {
+  color: inherit;
+  font-family: inherit;
+}
+li {
+  list-style: none;
+}
+body {
+  background: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: 0;
+  cursor: pointer;
+}

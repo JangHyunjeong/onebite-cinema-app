@@ -1,0 +1,48 @@
+.thumbWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 50px;
+  background-image: var(--poster-img-url);
+  background-position: 50%;
+  background-size: cover;
+  &::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    content: "";
+  }
+  .img {
+    display: block;
+    width: 300px;
+    z-index: 1;
+  }
+}
+.content {
+  margin-top: 40px;
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .infos {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 14px;
+  }
+  .subTitle {
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 40px;
+  }
+  .desc {
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+}
