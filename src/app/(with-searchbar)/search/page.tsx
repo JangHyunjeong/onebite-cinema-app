@@ -1,5 +1,5 @@
+import { MovieData } from "@/types";
 import style from "./page.module.css";
-import dummy from "@/dummy.json";
 import MovieItem from "@/app/components/movie-item";
 
 export default async function Page({
@@ -8,12 +8,16 @@ export default async function Page({
   searchParams: Promise<{ q: string }>;
 }) {
   const { q } = await searchParams;
-  const movies = dummy.filter(({ title }) => title.includes(q)) || [];
-
-  if (movies.length < 1) return <>검색 결과가 없습니다.</>;
-  else
-    return (
-      <>
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`
+  );
+  if (!response.ok) return <>문제가 발생했습니다.</>;
+  else {
+    const movies: MovieData[] = await response.json();
+    console.log(movies);
+    if (movies.length < 1) return <>검색 결과가 없습니다.</>;
+    else {
+      return (
         <div
           className={style.movieList}
           style={{ "--items-per-row": "3" } as React.CSSProperties}
@@ -22,6 +26,7 @@ export default async function Page({
             <MovieItem key={movie.id} {...movie} />
           ))}
         </div>
-      </>
-    );
+      );
+    }
+  }
 }
