@@ -9,12 +9,13 @@ export default async function Page({
 }) {
   const { q } = await searchParams;
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`,
+    { cache: "force-cache" }
   );
   if (!response.ok) return <>문제가 발생했습니다.</>;
   else {
     const movies: MovieData[] = await response.json();
-    console.log(movies);
+
     if (movies.length < 1) return <>검색 결과가 없습니다.</>;
     else {
       return (
