@@ -1,8 +1,8 @@
 import Link from "next/link";
 import style from "./movie-item.module.css";
-import type { MovieDataType } from "@/type";
+import { MovieData } from "@/types";
 
-export default function MovieItem({ id, title, posterImgUrl }: MovieDataType) {
+export default function MovieItem({ id, title, posterImgUrl }: MovieData) {
   return (
     <div className={style.container}>
       <Link className={style.link} href={`/movie/${id}`}>
