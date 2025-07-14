@@ -1,8 +1,8 @@
 import style from "./page.module.css";
-import MovieItem from "../components/movie-item";
+import MovieItem from "@/components/movie-item";
 import { MovieData } from "@/types";
 import { Suspense } from "react";
-import MovieListSkeleton from "../components/skeleton/movie-list-skeleton";
+import MovieListSkeleton from "@/components/skeleton/movie-list-skeleton";
 import { delay } from "@/util/delay";
 
 async function RandomMovies() {

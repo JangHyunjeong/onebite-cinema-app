@@ -1,9 +1,9 @@
 import { MovieData } from "@/types";
 import style from "./page.module.css";
-import MovieItem from "@/app/components/movie-item";
+import MovieItem from "@/components/movie-item";
 import { delay } from "@/util/delay";
 import { Suspense, useEffect } from "react";
-import MovieListSkeleton from "@/app/components/skeleton/movie-list-skeleton";
+import MovieListSkeleton from "@/components/skeleton/movie-list-skeleton";
 
 async function SearchMovies({ q }: { q: string }) {
   await delay(3000);
