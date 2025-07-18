@@ -1,0 +1,23 @@
+.reviewContainer {
+  display: grid;
+  gap: 10px;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
+  &:first-of-type {
+    border-top: 1px solid #ccc;
+  }
+}
+.reviewBottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: rgb(182, 182, 182);
+}
+.delBtn {
+  background-color: #3f3f3f;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}

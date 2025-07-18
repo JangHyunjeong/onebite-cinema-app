@@ -1,3 +1,8 @@
+.container {
+  display: grid;
+  gap: 100px;
+}
+
 .thumbWrap {
   display: flex;
   align-items: center;
@@ -36,7 +41,7 @@
     margin-top: 14px;
     font-size: 14px;
   }
-  .subTitle {
+  .subtitle {
     font-weight: 700;
     font-size: 18px;
     margin-top: 40px;
