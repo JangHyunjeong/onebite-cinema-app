@@ -13,11 +13,3 @@
   gap: 15px;
   color: rgb(182, 182, 182);
 }
-.delBtn {
-  background-color: #3f3f3f;
-  color: white;
-  border: none;
-  padding: 5px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-}

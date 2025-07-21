@@ -1,49 +1,38 @@
+"use client";
+import { createReviewAction } from "@/actions/create-review-action";
 import style from "./review-editor.module.css";
-
-export async function createReviewAction(formData: FormData) {
-  "use server";
-
-  const movieId = formData.get("movieId")?.toString();
-  const content = formData.get("content")?.toString();
-  const author = formData.get("author")?.toString();
-
-  if (!content || !author) return;
-
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review`,
-      {
-        method: "POST",
-        body: JSON.stringify({ movieId, content, author }),
-      }
-    );
-    console.log(response);
-  } catch (error) {
-    console.error(`error!!! : ${error}`);
-    return;
-  }
-}
+import { useActionState, useEffect } from "react";
 
 export function ReviewEditor({ movieId }: { movieId: string }) {
+  const [state, formAction, pending] = useActionState(createReviewAction, null); // useActionState(서버액션함수, 초기값)
+
+  useEffect(() => {
+    if (state && !state.status) {
+      alert(state.error);
+    }
+  }, [state]);
+
   return (
     <div className={style.formContainer}>
-      <form action={createReviewAction}>
+      <form action={formAction}>
         <textarea
           className={style.textarea}
           name="content"
           placeholder="리뷰 내용을 입력해주세요."
+          disabled={pending}
         ></textarea>
 
         <div className={style.submitContainer}>
-          <input type="hidden" name="movieId" value={movieId} />
+          <input type="hidden" name="movieId" value={movieId} readOnly />
           <input
             className={style.submitInput}
             type="text"
             placeholder="작성자"
             name="author"
+            disabled={pending}
           />
-          <button type="submit" className={style.submitBtn}>
-            작성하기
+          <button type="submit" className={style.submitBtn} disabled={pending}>
+            {pending ? "..." : "작성하기"}
           </button>
         </div>
       </form>
