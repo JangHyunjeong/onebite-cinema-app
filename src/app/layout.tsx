@@ -3,6 +3,7 @@ import "./globals.css";
 import style from "./layout.module.css";
 import Link from "next/link";
 import localFont from "next/font/local";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,8 +19,10 @@ const pretendard = localFont({
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -33,6 +36,8 @@ export default function RootLayout({
           </main>
           <footer className={style.footer}>@lulullu</footer>
         </div>
+        {modal}
+        <div id="modalRoot"></div>
       </body>
     </html>
   );
