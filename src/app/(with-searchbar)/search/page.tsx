@@ -1,12 +1,27 @@
 import { MovieData } from "@/types";
 import style from "./page.module.css";
 import MovieItem from "@/components/movie-item";
-import { delay } from "@/util/delay";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import MovieListSkeleton from "@/components/skeleton/movie-list-skeleton";
 
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q = "" } = await searchParams;
+  return {
+    title: `한입영화 - ${q}`,
+    description: `${q} 의 검색결과입니다 .`,
+    openGraph: {
+      title: `한입영화 - ${q}`,
+      description: `${q} 의 검색결과입니다 .`,
+      images: ["/thumbnail.png"],
+    },
+  };
+}
+
 async function SearchMovies({ q }: { q: string }) {
-  await delay(3000);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/search?q=${q}`,
     { cache: "force-cache" }

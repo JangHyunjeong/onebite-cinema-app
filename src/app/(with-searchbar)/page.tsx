@@ -3,10 +3,19 @@ import MovieItem from "@/components/movie-item";
 import { MovieData } from "@/types";
 import { Suspense } from "react";
 import MovieListSkeleton from "@/components/skeleton/movie-list-skeleton";
-import { delay } from "@/util/delay";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "한입영화",
+  description: "한입영화에 등록된 영화를 만나보세요",
+  openGraph: {
+    title: "한입영화",
+    description: "한입영화에 등록된 영화를 만나보세요",
+    images: ["/thumbnail.png"],
+  },
+};
 
 async function RandomMovies() {
-  await delay(1500);
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/random`,
     { next: { revalidate: 3 } }
@@ -29,8 +38,6 @@ async function RandomMovies() {
 }
 
 async function AllMovies() {
-  await delay(3000);
-
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie`,
     { cache: "force-cache" }

@@ -4,8 +4,31 @@ import type { MovieData, ReviewData } from "@/types";
 import { ReviewEditor } from "@/components/review-editor";
 import ReviewItem from "@/components/review-item";
 
-export function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id = "" } = await params;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/movie/${id}`,
+    { next: { tags: [`review/${id}`] } }
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const movie: MovieData = await response.json();
+  return {
+    title: `${movie.title} - 한입북스`,
+    description: `${movie.description}`,
+    openGraph: {
+      title: `${movie.title} - 한입북스`,
+      description: `${movie.description}`,
+      images: [`${movie.posterImgUrl}`],
+    },
+  };
 }
 
 async function MovieDetail({ movieId }: { movieId: string }) {
